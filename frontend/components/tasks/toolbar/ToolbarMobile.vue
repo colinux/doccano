@@ -5,6 +5,19 @@
     hide-on-scroll
   >
     <v-btn
+      v-if="showApproveButton"
+      icon
+      @click="$emit('click:review')"
+    >
+      <v-icon v-if="isReviewd">
+        mdi-check
+      </v-icon>
+      <v-icon v-else>
+        mdi-close
+      </v-icon>
+    </v-btn>
+
+    <v-btn
       :disabled="isFirstPage"
       @click="updatePage(page - 1)"
     >
@@ -30,7 +43,16 @@ export default Vue.extend({
       type: Number,
       default: 1,
       required: true
-    }
+    },
+    isReviewd: {
+      type: Boolean,
+      default: false
+    },
+    showApproveButton: {
+      type: Boolean,
+      default: false,
+      required: true
+    },
   },
 
   computed: {
@@ -49,7 +71,7 @@ export default Vue.extend({
   methods: {
     updatePage(page: number) {
       this.$router.push({ query: { page: page.toString() }})
-    }
+    },
   }
 })
 </script>

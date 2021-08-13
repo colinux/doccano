@@ -15,6 +15,9 @@
       <toolbar-mobile
         :total="docs.count"
         class="d-flex d-sm-none"
+        :show-approve-button="project.permitApprove"
+        :is-reviewd="doc.isApproved"
+        @click:review="approve"
       />
     </template>
     <template v-slot:content>
