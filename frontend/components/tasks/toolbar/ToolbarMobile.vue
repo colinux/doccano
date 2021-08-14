@@ -4,18 +4,11 @@
     absolute
     hide-on-scroll
   >
-    <v-btn
+    <button-review-icon
       v-if="showApproveButton"
-      icon
-      @click="$emit('click:review')"
-    >
-      <v-icon v-if="isReviewd">
-        mdi-check
-      </v-icon>
-      <v-icon v-else>
-        mdi-close
-      </v-icon>
-    </v-btn>
+      :is-reviewd="isReviewd"
+      @click:review="$emit('click:review')"
+    />
 
     <v-btn
       :disabled="isFirstPage"
@@ -37,7 +30,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import ButtonReviewIcon from './buttons/ButtonReviewIcon.vue'
 export default Vue.extend({
+  components: {
+    ButtonReviewIcon
+  },
+
   props: {
     total: {
       type: Number,

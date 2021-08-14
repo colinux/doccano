@@ -1,18 +1,11 @@
 <template>
   <v-tooltip bottom>
     <template v-slot:activator="{ on }">
-      <v-btn
-        icon
-        v-on="on"
-        @click="$emit('click:review')"
-      >
-        <v-icon v-if="isReviewd">
-          mdi-check
-        </v-icon>
-        <v-icon v-else>
-          mdi-close
-        </v-icon>
-      </v-btn>
+      <button-review-icon
+        :is-reviewd="isReviewd"
+        :tooltip-activator="on"
+        @click:review="$emit('click:review')"
+       />
     </template>
     <span v-if="isReviewd">{{ $t('annotation.checkedTooltip') }}</span>
     <span v-else>{{ $t('annotation.notCheckedTooltip') }}</span>
@@ -22,7 +15,11 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import ButtonReviewIcon from './ButtonReviewIcon.vue'
 export default Vue.extend({
+  components: {
+    ButtonReviewIcon,
+  },
   props: {
     isReviewd: {
       type: Boolean,
