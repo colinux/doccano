@@ -18,7 +18,7 @@
       />
     </v-navigation-drawer>
 
-    <v-main class="pb-0">
+    <v-main class="pb-sm-0">
       <nuxt />
     </v-main>
   </v-app>

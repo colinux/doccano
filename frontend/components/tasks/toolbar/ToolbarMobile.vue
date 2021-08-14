@@ -1,7 +1,7 @@
 <template>
   <v-bottom-navigation
     app
-    absolute
+    fixed
     hide-on-scroll
   >
     <button-review-icon
