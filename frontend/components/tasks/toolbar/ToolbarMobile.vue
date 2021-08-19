@@ -2,7 +2,6 @@
   <v-bottom-navigation
     app
     fixed
-    hide-on-scroll
   >
     <button-review-icon
       v-if="showApproveButton"
